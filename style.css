@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-transaksi, .saldo, .riwayat-transaksi, .grafik, .backup-restore, .filter {
+    margin-bottom: 20px;
+}
+
+.form-transaksi form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.form-transaksi label {
+    grid-column: 1 / 3;
+}
+
+.form-transaksi input, .form-transaksi select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.form-transaksi button {
+    grid-column: 1 / 3;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.form-transaksi button:hover {
+    background-color: #0056b3;
+}
+
+.saldo h2 span {
+    color: #28a745;
+}
+
+.riwayat-transaksi table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.riwayat-transaksi th, .riwayat-transaksi td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.grafik {
+    width: 100%;
+    height: 400px;
+}
+
+canvas {
+    width: 100% !important;
+    height: 400px !important;
+}
+
+.backup-restore button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.backup-restore button:hover {
+    background-color: #0056b3;
+}

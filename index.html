@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keuangan Pribadi</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body onload="initializeApp()">
+    <div class="container" id="app-container">
+        <h1>Keuangan Pribadi</h1>
+        <p id="welcome-message"></p>
+        <button onclick="logout()">Logout</button>
+        
+        <!-- Form Transaksi -->
+        <div class="form-transaksi">
+            <h2>Tambah Transaksi</h2>
+            <form id="form-transaksi" onsubmit="tambahTransaksi(event)">
+                <label for="jenis">Jenis Transaksi:</label>
+                <select id="jenis" required>
+                    <option value="">Pilih jenis</option>
+                    <option value="pemasukan">Pemasukan</option>
+                    <option value="pengeluaran">Pengeluaran</option>
+                </select>
+
+                <label for="kategori">Kategori:</label>
+                <select id="kategori" required>
+                    <option value="">Pilih kategori</option>
+                </select>
+
+                <label for="jumlah">Jumlah:</label>
+                <input type="number" id="jumlah" min="0" step="1000" required>
+
+                <label for="keterangan">Keterangan:</label>
+                <input type="text" id="keterangan" required>
+
+                <button type="submit">Tambah</button>
+            </form>
+        </div>
+
+        <!-- Saldo -->
+        <div class="saldo">
+            <h2>Saldo: <span id="saldo">Rp 0</span></h2>
+        </div>
+
+        <!-- Filter dan Pencarian -->
+        <div class="filter">
+            <label for="search-input">Cari:</label>
+            <input type="text" id="search-input" placeholder="Cari transaksi...">
+            
+            <label for="filter-kategori">Filter Kategori:</label>
+            <select id="filter-kategori">
+                <option value="">Semua</option>
+                <option value="gaji">Gaji</option>
+                <option value="bonus">Bonus</option>
+                <option value="investasi">Investasi</option>
+                <option value="lainnya">Lainnya</option>
+                <option value="makanan">Makanan</option>
+                <option value="transportasi">Transportasi</option>
+                <option value="hiburan">Hiburan</option>
+                <option value="belanja">Belanja</option>
+                <option value="tagihan">Tagihan</option>
+            </select>
+
+            <label for="filter-tanggal">Filter Tanggal:</label>
+            <input type="date" id="filter-tanggal-start">
+            <input type="date" id="filter-tanggal-end">
+            <button onclick="resetFilter()">Reset Filter</button>
+        </div>
+
+        <!-- Riwayat Transaksi -->
+        <div class="riwayat-transaksi">
+            <h2>Riwayat Transaksi</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tanggal</th>
+                        <th>Jenis</th>
+                        <th>Kategori</th>
+                        <th>Jumlah</th>
+                        <th>Keterangan</th>
+                    </tr>
+                </thead>
+                <tbody id="riwayat-transaksi">
+                    <!-- Riwayat akan ditampilkan di sini -->
+                </tbody>
+            </table>
+            <button onclick="resetRiwayat()">Reset Riwayat</button> <!-- Tombol reset riwayat -->
+        </div>
+
+        <!-- Grafik -->
+        <div class="grafik">
+            <h2>Grafik Keuangan</h2>
+            <canvas id="grafikBar"></canvas>
+        </div>
+
+        <!-- Backup dan Restore -->
+        <div class="backup-restore">
+            <button onclick="backupData()">Backup Data</button>
+            <input type="file" id="restore-file" accept=".json" onchange="restoreData(event)">
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
